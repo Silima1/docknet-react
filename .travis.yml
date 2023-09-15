@@ -6,4 +6,4 @@ before_install:
   - docker build -t silima1/dockubernet_react -f Dockerfile.dev .
 
 script: 
-  - docker run silima1/dockubernet_react npm run test
+  - docker run silima1/docknet-react npm run test -- -- coverage
