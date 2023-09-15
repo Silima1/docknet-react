@@ -1,13 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { createRoot } from 'react-dom/client'; // Importe createRoot do React a partir de "react-dom/client"
 import App from './App';
+import { render, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils'; // Importe a função act do React Testing Library
 
-/*test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});*/
-it ('renders without crashing', () => {
+it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  const root = createRoot(div);
+  
+  act(() => { // Envolve a renderização em act
+    root.render(<App />);
+  });
 });
