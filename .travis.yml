@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t Silima1/dockubernet_react -f Dockerfile.dev .
+  - docker build -t silima1/dockubernet_react -f Dockerfile.dev .
 
 script: 
-  - docker run -e CI=true Silima1/dockubernet_react npm run test
+  - docker run silima1/dockubernet_react npm run test
