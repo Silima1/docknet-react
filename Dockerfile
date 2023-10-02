@@ -1,7 +1,7 @@
 # Estágio de construção
 FROM node:alpine as builder
 
-WORKDIR '/app'
+WORKDIR /app
 
 # Copie apenas o arquivo package.json inicial para aproveitar o cache de camadas
 COPY package.json .
@@ -14,7 +14,7 @@ RUN npm install @babel/preset-react --save-dev
 COPY . .
 
 # Construa o aplicativo
-RUN npm run build
+RUN npm run build /
 
 # Estágio de produção
 FROM nginx
