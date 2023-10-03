@@ -8,6 +8,6 @@ before_install:
 script:
   - docker run silima1/docker-react npm run test -- --coverage
 
-#before_script:
+before_script:
   # Adicione essa etapa para instalar o @babel/preset-react antes de executar os testes
- # - docker exec -it silima1/docker-react npm install --save-dev @babel/preset-react
+  - docker exec -it silima1/docker-react npm install --save-dev @babel/preset-react
