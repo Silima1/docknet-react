@@ -19,6 +19,18 @@ deploy:
   bucket_path: "Docker-kubernet"
   on:
     branch: main
-
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
+
+# Adicione a seguinte seção para definir um timeout personalizado
+addons:
+  apt:
+    packages:
+      - timeout
+  homebrew:
+    packages:
+      - timeout
+
+# Script de timeout personalizado
+after_script:
+  - "timeout 1800 sleep 600"
