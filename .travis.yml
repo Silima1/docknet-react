@@ -3,11 +3,10 @@ services:
   - docker
 
 before_install:
-  # Construa a imagem do Docker
   - docker build -t silima1/docker-react -f Dockerfile.dev .
+  - npm install -g create-react-app
 
 script:
-  # Execute a instalação das dependências e, em seguida, execute os testes
   - docker run silima1/docker-react npm install
   - docker run silima1/docker-react npm run test -- --coverage
 
@@ -21,5 +20,5 @@ deploy:
   on:
     branch: master
 
-  access_key_id: AWS_ACCESS_KEY
-  secret_access_key: AWS_SECRET_KEY
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
