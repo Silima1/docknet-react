@@ -14,10 +14,11 @@ RUN npm install @babel/preset-react --save-dev
 COPY . .
 
 # Construa o aplicativo
-RUN npm run build /
+RUN npm run build
 
 # Estágio de produção
 FROM nginx
+EXPOSE 80
 
 # Copie os arquivos de construção do estágio de construção para o local apropriado no contêiner Nginx
 COPY --from=builder /app/build /usr/share/nginx/html
