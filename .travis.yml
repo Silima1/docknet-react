@@ -18,19 +18,6 @@ deploy:
   bucket_name: "elasticbeanstalk-eu-north-1-059532462828"
   bucket_path: "Docker"
   on:
-    branch: main
+    branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_ACCESS_KEY
-
-# Timeout personalizado
-before_script:
-  - echo "Setting a 30-minute timeout for the build"
-  - date
-  - export BUILD_TIMEOUT=1800  # 30 minutes in seconds
-  - export BUILD_START_TIME=$(date +%s)
-
-after_script:
-  - export BUILD_END_TIME=$(date +%s)
-  - export BUILD_DURATION=$((BUILD_END_TIME - BUILD_START_TIME))
-  - echo "Build duration: $BUILD_DURATION seconds"
-  - if [[ $BUILD_DURATION -ge $BUILD_TIMEOUT ]]; then echo "Build timed out!"; travis_terminate 1; fi
